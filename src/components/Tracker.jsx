@@ -1,5 +1,5 @@
 import moment from 'moment'
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { DeleteButton, NameTracker, PauseButton, ResumeButton, TrackerWrapper } from '../style/styledComponent'
 
@@ -8,7 +8,7 @@ const Tracker = (props) => {
   const [time, setTime] = React.useState(0)
   const [timerOn, setTimerOn] = React.useState(false)
 
-  React.useEffect(() => {
+  useEffect(() => {
     let interval = null
     if (timerOn) {
       interval = setInterval(() => {
