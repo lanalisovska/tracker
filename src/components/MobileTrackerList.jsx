@@ -1,13 +1,9 @@
+import React from 'react'
 
-
-export default function MobileTrackerList() {
-   
-
-    return (
-  
-            <div>
-                max-width: 520px;
-min-width: 320px;f
-            </div>
-    )
+export default function MobileTrackerList () {
+  return (
+      <div>
+        Will be soon
+      </div>
+  )
 }

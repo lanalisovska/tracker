@@ -1,6 +1,5 @@
-import styled from 'styled-components'
-import { createGlobalStyle } from 'styled-components'
-import iconStart  from './../icons/play_icon.svg'
+import styled, { createGlobalStyle } from 'styled-components'
+import iconStart from './../icons/play_icon.svg'
 import iconRemove from './../icons/remove.svg'
 import iconPause from './../icons/pause.svg'
 
@@ -15,9 +14,8 @@ const GlobalStyle = createGlobalStyle`
     flex-direction: column;
     align-items: center;
   }
-`;
-export default GlobalStyle;
- 
+`
+export default GlobalStyle
 
 export const Container = styled.div`
 
@@ -28,10 +26,6 @@ export const Container = styled.div`
   width: 520px;
   padding: 10px 0;
 `
-
-
-
-
 
 export const Input = styled.input`
   height: 40px;

@@ -1,12 +1,11 @@
-import { addTrackerAC } from "../reducers/trackerReducer";
+import { addTrackerAC } from '../reducers/trackerReducer'
 
 export const addTrackerAction = (tracker) => {
   return dispatch => {
     try {
       dispatch(addTrackerAC(tracker))
-    }
-    catch(e){
-           console.log(e)
+    } catch (e) {
+      console.log(e)
     }
   }
 }
