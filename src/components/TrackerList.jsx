@@ -45,7 +45,7 @@ export default function TrackerList () {
                     onChange={(e) => setValue(e.target.value)} />
                 <ButtonAdd onClick={() => addTracker()} />
             </InputWrapper>
-            {trackersList.map(tracker => <Tracker removeFromLocal={removeFromLocal} key={tracker.id} tracker={tracker} />)}
+            { trackersList ? trackersList.map(tracker => <Tracker removeFromLocal={removeFromLocal} key={tracker.id} tracker={tracker} />) : ''}
         </Container>
   )
 }
