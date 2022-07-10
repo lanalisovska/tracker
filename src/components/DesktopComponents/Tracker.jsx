@@ -1,7 +1,7 @@
 import moment from 'moment'
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { DeleteButton, NameTracker, PauseButton, ResumeButton, TrackerWrapper } from '../style/styledComponent'
+import { DeleteButton, NameTracker, PauseButton, ResumeButton, TrackerWrapper } from '../../style/styledComponent'
 
 const Tracker = (props) => {
   const { tracker, removeFromLocal } = props

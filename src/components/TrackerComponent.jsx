@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import MobileTrackerList from './MobileTrackerList'
-import TrackerList from './TrackerList'
+import MobileTrackerList from './MobileComonents/MobileTrackerList'
+import TrackerList from './DesktopComponents/TrackerList'
 
 const TrackerComponent = () => {
   const [width, setWidth] = React.useState(window.innerWidth)

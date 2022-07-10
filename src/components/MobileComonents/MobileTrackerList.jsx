@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
+import { MobileButtonAdd, MobileContainer, MobileInput, MobileInputWrapper } from '../../style/mobileStyledComponent'
 import moment from 'moment'
-import { addTrackerAction } from '../store/actions/tracker'
+import { addTrackerAction } from '../../store/actions/tracker'
 import { useDispatch, useSelector } from 'react-redux'
-import Tracker from './Tracker'
-import { ButtonAdd, Container, Input, InputWrapper } from '../style/styledComponent'
-import { removeTracker } from '../store/reducers/trackerReducer'
+import { removeTracker } from '../../store/reducers/trackerReducer'
+import MobileTracker from './MobileTracker'
 
-export default function TrackerList () {
+export default function MobileTrackerList () {
   const trackersList = useSelector(state => state.tracker.trackers)
   const [value, setValue] = useState('')
   const dispatch = useDispatch()
@@ -32,20 +32,20 @@ export default function TrackerList () {
     const date = moment().format()
     localStorage.removeItem(`${id}dateStop`)
     localStorage.setItem(`${id}dateStart`, date)
+    setValue('')
   }
 
   return (
-        <Container>
-            <h2>Tracker</h2>
-            <InputWrapper>
-
-                <Input
-                    placeholder='Enter tracker name'
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)} />
-                <ButtonAdd onClick={() => addTracker()} />
-            </InputWrapper>
-            { trackersList ? trackersList.map(tracker => <Tracker removeFromLocal={removeFromLocal} key={tracker.id} tracker={tracker} />) : ''}
-        </Container>
+      <MobileContainer>
+         <div>Tracker</div>
+         <MobileInputWrapper>
+           <MobileInput
+             placeholder='Enter tracker name'
+             value={value}
+             onChange={(e) => setValue(e.target.value)} />
+          <MobileButtonAdd onClick={() => addTracker()}/>
+         </MobileInputWrapper>
+         { trackersList ? trackersList.map(tracker => <MobileTracker removeFromLocal={removeFromLocal} key={tracker.id} tracker={tracker} />) : ''}
+      </MobileContainer>
   )
 }
