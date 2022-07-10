@@ -7,7 +7,10 @@ import { ButtonAdd, Container, Input, InputWrapper } from '../../style/styledCom
 import { removeTracker } from '../../store/reducers/trackerReducer'
 
 export default function TrackerList () {
-  const trackersList = useSelector(state => state.tracker.trackers)
+  const trackersList = useSelector(state => state.tracker.trackers).sort(function (a, b) {
+    return b.id - a.id
+  })
+
   const [value, setValue] = useState('')
   const dispatch = useDispatch()
 
@@ -24,6 +27,14 @@ export default function TrackerList () {
     console.log(trackerId)
   }
 
+  function onSubmit (e) {
+    e.preventDefault()
+    if (e.which === 13) {
+      addTracker()
+    }
+    addTracker()
+  }
+
   function addTracker () {
     const id = Date.now()
     const newTracker = { id, value }
@@ -38,13 +49,13 @@ export default function TrackerList () {
   return (
         <Container>
             <h2>Tracker</h2>
-            <InputWrapper>
+            <InputWrapper onSubmit={(e) => onSubmit(e)}>
 
                 <Input
                     placeholder='Enter tracker name'
                     value={value}
                     onChange={(e) => setValue(e.target.value)} />
-                <ButtonAdd onClick={() => addTracker()} />
+                <ButtonAdd type='submit' onClick={() => addTracker()} />
             </InputWrapper>
             { trackersList ? trackersList.map(tracker => <Tracker removeFromLocal={removeFromLocal} key={tracker.id} tracker={tracker} />) : ''}
         </Container>

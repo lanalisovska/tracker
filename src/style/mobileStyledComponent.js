@@ -5,26 +5,21 @@ import iconPause from './../icons/pause.svg'
 
 export const MobileContainer = styled.div`
  
-  border-radius: 5px;
   display: flex; 
   flex-direction: column;
   align-items: center;
   max-width: 520px;
-  padding: 0 40px;
   min-width: 320px;
-
-  justify-content: center;
+  width: auto;
   height: auto;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+
   
 `
 
-export const MobileInputWrapper = styled.div`
-max-width: 520px;
+export const MobileInputWrapper = styled.form`
+max-width: 450px;
 min-width: 320px;
-width: 90%;
+width: 80%;
 height: 45px;
 display: flex;
 flex-direction: row;
@@ -57,7 +52,8 @@ export const MobileButtonAdd = styled.div`
 `
 export const MobileTrackerWrapper = styled.div`
 min-width: 320px;
-max-width: 430px;
+max-width: 400px;
+width: auto;
 height: 50px;
 display: flex;
 flex-direction: row;

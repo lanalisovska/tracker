@@ -1,20 +1,10 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import MobileTrackerList from './MobileComonents/MobileTrackerList'
 import TrackerList from './DesktopComponents/TrackerList'
 
 const TrackerComponent = () => {
   const [width, setWidth] = React.useState(window.innerWidth)
   const breakpoint = 560
-  const trackersList = useSelector(state => state.tracker.trackers)
-
-  useEffect(() => {
-    if (trackersList) {
-      trackersList.sort(function (a, b) {
-        return b.id - a.id
-      })
-    }
-  }, [trackersList])
 
   useEffect(() => {
     const handleWindowResize = () => setWidth(window.innerWidth)

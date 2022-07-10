@@ -39,7 +39,7 @@ export const Input = styled.input`
     border: none;
 }
 `
-export const InputWrapper = styled.div`
+export const InputWrapper = styled.form`
 width: 480px;
 height: 45px;
 display: flex;

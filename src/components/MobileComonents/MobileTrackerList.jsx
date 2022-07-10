@@ -7,7 +7,9 @@ import { removeTracker } from '../../store/reducers/trackerReducer'
 import MobileTracker from './MobileTracker'
 
 export default function MobileTrackerList () {
-  const trackersList = useSelector(state => state.tracker.trackers)
+  const trackersList = useSelector(state => state.tracker.trackers).sort(function (a, b) {
+    return b.id - a.id
+  })
   const [value, setValue] = useState('')
   const dispatch = useDispatch()
 
