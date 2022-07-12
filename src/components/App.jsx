@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import GlobalStyle from '../style/styledComponent'
-import TrackerList from './DesktopComponents/TrackerList'
+import TrackerList from './TrackerList'
 
 function App () {
   const list = JSON.parse(localStorage.getItem('allTrackers'))

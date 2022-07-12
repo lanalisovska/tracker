@@ -1,15 +1,19 @@
 import React, { useState } from 'react'
 import moment from 'moment'
-import { addTrackerAction } from '../../store/actions/tracker'
+import { addTrackerAction } from '../store/actions/tracker'
 import { useDispatch, useSelector } from 'react-redux'
 import Tracker from './Tracker'
-import { ButtonAdd, Container, Input, InputWrapper } from '../../style/styledComponent'
-import { removeTracker } from '../../store/reducers/trackerReducer'
+import { ButtonAdd, Container, Input, InputWrapper } from '../style/styledComponent'
+import { removeTracker } from '../store/reducers/trackerReducer'
 
 export default function TrackerList () {
-  const trackersList = useSelector(state => state.tracker.trackers).sort(function (a, b) {
-    return b.id - a.id
-  })
+  const trackers = useSelector(state => state.tracker.trackers)
+
+  const trackersList = trackers
+    ? trackers.sort(function (a, b) {
+      return b.id - a.id
+    })
+    : null
 
   const [value, setValue] = useState('')
   const dispatch = useDispatch()

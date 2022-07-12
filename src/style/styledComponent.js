@@ -2,7 +2,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 import iconStart from './../icons/play_icon.svg'
 import iconRemove from './../icons/remove.svg'
 import iconPause from './../icons/pause.svg'
-import { device } from './device'
+import { size } from './device'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -19,29 +19,24 @@ const GlobalStyle = createGlobalStyle`
 export default GlobalStyle
 
 export const Container = styled.div`
-
   border-radius: 5px;
   display: flex; 
   flex-direction: column;
   align-items: center;
-  width: 520px;
-  padding: 10px 0;
-
-  @media ${device.desktop} {
-    max-width: 520px;
-  }
-  @media ${device.mobile} {
-     
-  display: flex; 
-  flex-direction: column;
-  align-items: center;
-  max-width: 520px;
-  min-width: 320px;
-  width: auto;
   height: auto;
 
+  @media  all and (min-width: ${size.minDesktop}) and (max-width: ${size.maxDesktop}) {
+    padding: 10px 0;
+    width: 520px;
   }
-
+  @media all and (max-width: ${size.maxMobile}) and (min-width: ${size.minMobile})  {
+    max-width: 520px;
+    min-width: 320px;
+    width: auto;
+  }
+  @media (max-width: ${size.minMobile})  {
+    width: 320px;
+  }
 `
 
 export const Input = styled.input`
@@ -51,10 +46,18 @@ export const Input = styled.input`
   background-color: inherit;
   border-radius: 30px;
   border: none;
+  padding: 2px 5px;
+
   &:focus {
     outline: none;
     border: none;
-}
+ }
+ @media all and (max-width: ${size.maxMobile}) and (min-width: ${size.minMobile}) {
+    width: 85%;
+
+  @media (max-width: ${size.minMobile})  {
+    width: 320px;
+  }
 `
 export const InputWrapper = styled.form`
 width: 480px;
@@ -66,6 +69,15 @@ border-radius: 30px;
 border: 1px solid #EF7C1D;
 align-items: center;
 margin: 10px 0;
+
+@media all and (max-width: ${size.maxMobile}) and (min-width: ${size.minMobile}) {
+  max-width: 450px;
+  min-width: 320px;
+  width: 80%;
+} 
+@media (max-width: ${size.minMobile})  {
+  width: 300px;
+}
 
 `
 
@@ -83,15 +95,32 @@ width: 480px;
 height: 50px;
 display: flex;
 flex-direction: row;
-backround-color: red;
-border-bottom: 1px solid gray; 
+border-bottom: 1px solid #EF7C1D; 
 align-items: center;
 margin: 10px 0;
+padding: 0 10px;
+
+@media all and (max-width: ${size.maxMobile}) and (min-width: ${size.minMobile}) {
+  min-width: 320px;
+  max-width: 400px;
+
+  width: 90%;
+}
+@media (max-width: ${size.minMobile})  {
+  width: 300px;
+}
 
 `
 
 export const NameTracker = styled.div`
 width: 400px;
+
+@media all and (max-width: ${size.maxMobile}) and (min-width: ${size.minMobile}) {
+  width: 300px;
+}
+@media (max-width: ${size.minMobile})  {
+  width: 230px;
+}
 `
 
 export const DeleteButton = styled.button`
@@ -113,8 +142,8 @@ border: none;
 width: 40px;
 background-color: inherit;
 
-
 `
+
 export const PauseButton = styled.button`
 background-image: url(${iconPause});
 height: 40px;
@@ -124,5 +153,5 @@ background-size: 100%;
 border: none;
 background-color: inherit;
 backround-color: none;
-
+  
 `
