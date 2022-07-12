@@ -67,24 +67,24 @@ export const Input = styled.input`
   }
 `
 export const InputWrapper = styled.form`
-width: 480px;
-height: 45px;
-display: flex;
-flex-direction: row;
-background-color: #fff;
-border-radius: 30px;
-border: 1px solid #EF7C1D;
-align-items: center;
-margin: 10px 0;
-
-@media all and (max-width: ${size.maxMobile}) and (min-width: ${size.minMobile}) {
-  max-width: 450px;
-  min-width: 320px;
-  width: 80%;
-} 
-@media (max-width: ${size.minMobile})  {
-  width: 300px;
-}
+  width: 480px;
+  height: 45px;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  border-radius: 30px;
+  border: 1px solid #EF7C1D;
+  align-items: center;
+  margin: 10px 0;
+  
+  @media all and (max-width: ${size.maxMobile}) and (min-width: ${size.minMobile}) {
+    max-width: 450px;
+    min-width: 320px;
+    width: 80%;
+  } 
+  @media (max-width: ${size.minMobile})  {
+    width: 300px;
+  }
 
 `
 
@@ -92,88 +92,83 @@ export const ButtonAdd = styled.div`
    width: 45px;
    height: 40px;
    background-image: url(${iconStart});
-  background-repeat: no-repeat; 
-  background-size: 100%;
-  background-position: right;
+   background-repeat: no-repeat; 
+   background-size: 100%;
+   background-position: right;
   
 `
 export const TrackerWrapper = styled.div`
-width: 480px;
-height: 50px;
-display: flex;
-flex-direction: row;
-border-bottom: 1px solid #EF7C1D; 
-align-items: center;
-margin: 10px 0;
-padding: 0 10px;
-animation: showY 1.0s forwards;
-
-@media all and (max-width: ${size.maxMobile}) and (min-width: ${size.minMobile}) {
-  min-width: 320px;
-  max-width: 400px;
-
-  width: 90%;
-}
-@media (max-width: ${size.minMobile})  {
-  width: 300px;
-}
-@keyframes showY {
-  0% {
-    opacity: 0;
-    transform: translateY(-400px);
+  width: 480px;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #EF7C1D; 
+  align-items: center;
+  margin: 10px 10px;
+  animation: showY 1.0s forwards;
+  
+  @media all and (max-width: ${size.maxMobile}) and (min-width: ${size.minMobile}) {
+    min-width: 320px;
+    max-width: 400px;
+    width: 90%;
   }
-  50% {
-    opacity: 0;
+  @media (max-width: ${size.minMobile})  {
+    width: 300px;
   }
-  100% {
-   transform: translateY(0);
+  @keyframes showY {
+    0% {
+      opacity: 0;
+      transform: translateY(-400px);
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+     transform: translateY(0);
+    }
   }
-}
-
-
-
 `
 
 export const NameTracker = styled.div`
-width: 400px;
-
-@media all and (max-width: ${size.maxMobile}) and (min-width: ${size.minMobile}) {
-  width: 300px;
-}
-@media (max-width: ${size.minMobile})  {
-  width: 230px;
-}
+  width: 400px;
+  
+  @media all and (max-width: ${size.maxMobile}) and (min-width: ${size.minMobile}) {
+    width: 300px;
+  }
+  @media (max-width: ${size.minMobile})  {
+    width: 230px;
+  }
 `
 
 export const DeleteButton = styled.button`
-background-image: url(${iconRemove});
-height: 40px;
-background-repeat: no-repeat; 
-background-size: 100%;
-border: none;
-width: 40px;
-background-color: inherit;
+  background-image: url(${iconRemove});
+  height: 40px;
+  background-repeat: no-repeat; 
+  background-size: 100%;
+  border: none;
+  width: 40px;
+  background-color: inherit;
 
 `
 export const ResumeButton = styled.button`
-background-image: url(${iconStart});
-height: 40px;
-background-repeat: no-repeat; 
-background-size: 100%;
-border: none;
-width: 40px;
-background-color: inherit;
+  background-image: url(${iconStart});
+  height: 40px;
+  background-repeat: no-repeat; 
+  background-size: 100%;
+  border: none;
+  width: 40px;
+  background-color: inherit;
 
 `
 
 export const PauseButton = styled.button`
-background-image: url(${iconPause});
-height: 40px;
-width: 40px;
-background-repeat: no-repeat; 
-background-size: 100%;
-border: none;
-background-color: inherit;
-backround-color: none;
+  background-image: url(${iconPause});
+  height: 40px;
+  width: 40px;
+  background-repeat: no-repeat; 
+  background-size: 100%;
+  border: none;
+  background-color: inherit;
+  backround-color: none;
   
 `

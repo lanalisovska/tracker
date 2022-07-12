@@ -1,12 +1,13 @@
 import moment from 'moment'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { DeleteButton, NameTracker, PauseButton, ResumeButton, TrackerWrapper } from '../style/styledComponent'
 
-const Tracker = (props) => {
-  const { tracker, removeFromLocal } = props
-  const [time, setTime] = React.useState(0)
-  const [timerOn, setTimerOn] = React.useState(false)
+const Tracker = ({ tracker, removeFromLocal }) => {
+  const [time, setTime] = useState(0)
+  const [timerOn, setTimerOn] = useState(false)
+  const timeStart = localStorage.getItem(`${tracker.id}dateStart`)
+  const timeStop = localStorage.getItem(`${tracker.id}dateStop`)
 
   useEffect(() => {
     let interval = null
@@ -20,26 +21,23 @@ const Tracker = (props) => {
     return () => clearInterval(interval)
   }, [timerOn])
 
-  React.useEffect(() => {
-    const date2 = localStorage.getItem(`${tracker.id}dateStart`)
-    if (date2 !== null) {
-      const date = moment()
+  useEffect(() => {
+    if (timeStart !== null) {
+      const dateNow = moment()
       setTimerOn(true)
-      setTime(moment(date.diff(date2)))
-    } else if (localStorage.getItem(`${tracker.id}dateStop`) !== null) {
+      setTime(moment(dateNow.diff(timeStart)))
+    } else if (timeStop !== null) {
       setTimerOn(false)
-      setTime(moment(localStorage.getItem(`${tracker.id}dateStop`)))
+      setTime(moment(timeStop))
     }
   }, [])
 
-  const stop = () => {
+  const pause = () => {
     setTimerOn(false)
     localStorage.removeItem(`${tracker.id}dateStart`)
     setTime(moment(time))
     localStorage.setItem(`${tracker.id}dateStop`, moment(time).format())
   }
-
-  const currentTime = moment(localStorage.getItem(`${tracker.id}dateStart`)).format('HH:mm:ss')
 
   const removeItem = () => {
     localStorage.removeItem(`${tracker.id}dateStart`)
@@ -49,14 +47,12 @@ const Tracker = (props) => {
 
   return (
      <TrackerWrapper>
-      <NameTracker>{tracker.value ? tracker.value : currentTime} </NameTracker>
-      <div id="display">
+      <NameTracker>{tracker.value || moment(timeStart).format('HH:mm:ss')} </NameTracker>
         <span>{('0' + Math.floor((time / 3600000) % 60)).slice(-2)}:</span>
         <span>{('0' + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
         <span>{('0' + Math.floor((time / 1000) % 60)).slice(-2)}</span>
-      </div>
        <DeleteButton onClick={() => removeItem()}/>
-          {timerOn && <PauseButton onClick={() => stop()} />}
+          {timerOn && <PauseButton onClick={() => pause()} />}
           {!timerOn && time > 0 && (
           <ResumeButton onClick={() => setTimerOn(true)} />
           )}

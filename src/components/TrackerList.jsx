@@ -8,33 +8,31 @@ import { removeTracker } from '../store/reducers/trackerReducer'
 
 export default function TrackerList () {
   const trackers = useSelector(state => state.tracker.trackers)
-
-  const trackersList = trackers
-    ? trackers.sort(function (a, b) {
-      return b.id - a.id
-    })
-    : null
-
   const [value, setValue] = useState('')
   const dispatch = useDispatch()
+  let allTrackers = JSON.parse(localStorage.getItem('allTrackers'))
+  const setAllTrackers = (trackers) => localStorage.setItem('allTrackers', JSON.stringify(trackers))
 
-  function addToLocal (tracker) {
-    const allTrackers = JSON.parse(localStorage.getItem('allTrackers'))
+  const trackersList = trackers
+    ? trackers.sort((a, b) => b.id - a.id)
+    : null
+
+  const addToLocal = (tracker) => {
     allTrackers.push(tracker)
-    localStorage.setItem('allTrackers', JSON.stringify(allTrackers))
+    setAllTrackers(allTrackers)
   }
+
   function removeFromLocal (trackerId) {
-    const allTrackers = JSON.parse(localStorage.getItem('allTrackers')).filter(track => track.id !== trackerId)
-    localStorage.setItem('allTrackers', JSON.stringify(allTrackers))
+    allTrackers = allTrackers.filter(track => track.id !== trackerId)
+    setAllTrackers(allTrackers)
     dispatch(removeTracker(trackerId))
   }
 
-  function onSubmit (e) {
+  function submitTracker (e) {
     e.preventDefault()
     if (e.which === 13) {
       addTracker()
-    }
-    addTracker()
+    } addTracker()
   }
 
   function addTracker () {
@@ -42,22 +40,20 @@ export default function TrackerList () {
     const newTracker = { id, value }
     dispatch(addTrackerAction(newTracker))
     addToLocal(newTracker)
-    const date = moment().format()
     localStorage.removeItem(`${id}dateStop`)
-    localStorage.setItem(`${id}dateStart`, date)
+    localStorage.setItem(`${id}dateStart`, moment().format())
     setValue('')
   }
 
   return (
         <Container>
             <h2>Tracker</h2>
-            <InputWrapper onSubmit={(e) => onSubmit(e)}>
-
+            <InputWrapper onSubmit={(e) => submitTracker(e)}>
                 <Input
                     placeholder='Enter tracker name'
                     value={value}
                     onChange={(e) => setValue(e.target.value)} />
-                <ButtonAdd type='submit' onClick={() => addTracker()} />
+                <ButtonAdd onClick={() => addTracker()}/>
             </InputWrapper>
             { trackersList ? trackersList.map(tracker => <Tracker removeFromLocal={removeFromLocal} key={tracker.id} tracker={tracker} />) : ''}
         </Container>
