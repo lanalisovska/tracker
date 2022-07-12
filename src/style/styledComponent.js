@@ -2,6 +2,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 import iconStart from './../icons/play_icon.svg'
 import iconRemove from './../icons/remove.svg'
 import iconPause from './../icons/pause.svg'
+import { device } from './device'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -25,6 +26,22 @@ export const Container = styled.div`
   align-items: center;
   width: 520px;
   padding: 10px 0;
+
+  @media ${device.desktop} {
+    max-width: 520px;
+  }
+  @media ${device.mobile} {
+     
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  max-width: 520px;
+  min-width: 320px;
+  width: auto;
+  height: auto;
+
+  }
+
 `
 
 export const Input = styled.input`

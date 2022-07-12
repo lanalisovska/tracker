@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import TrackerComponent from './TrackerComponent'
 import GlobalStyle from '../style/styledComponent'
+import TrackerList from './DesktopComponents/TrackerList'
 
 function App () {
   const list = JSON.parse(localStorage.getItem('allTrackers'))
@@ -12,7 +12,7 @@ function App () {
   return (
     <>
      <GlobalStyle/>
-      <TrackerComponent />
+      <TrackerList />
     </>
   )
 }
