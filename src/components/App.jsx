@@ -4,6 +4,7 @@ import TrackerList from './TrackerList'
 
 function App () {
   const list = JSON.parse(localStorage.getItem('allTrackers'))
+
   useEffect(() => {
     if (list === null) {
       localStorage.setItem('allTrackers', JSON.stringify([]))

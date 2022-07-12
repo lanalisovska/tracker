@@ -8,12 +8,19 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 20px;
+    color: #FC6900;
+    font-weight: bold;
+    font-size: 20px;
     background-color: #FEF8F4;
-    font-family: Open-Sans, Helvetica, Sans-Serif;
+    font-family: -apple-system, Open-Sans, Helvetica, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 `
 export default GlobalStyle
@@ -99,6 +106,7 @@ border-bottom: 1px solid #EF7C1D;
 align-items: center;
 margin: 10px 0;
 padding: 0 10px;
+animation: showY 1.0s forwards;
 
 @media all and (max-width: ${size.maxMobile}) and (min-width: ${size.minMobile}) {
   min-width: 320px;
@@ -109,6 +117,20 @@ padding: 0 10px;
 @media (max-width: ${size.minMobile})  {
   width: 300px;
 }
+@keyframes showY {
+  0% {
+    opacity: 0;
+    transform: translateY(-400px);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+   transform: translateY(0);
+  }
+}
+
+
 
 `
 

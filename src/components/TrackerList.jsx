@@ -26,9 +26,7 @@ export default function TrackerList () {
   function removeFromLocal (trackerId) {
     const allTrackers = JSON.parse(localStorage.getItem('allTrackers')).filter(track => track.id !== trackerId)
     localStorage.setItem('allTrackers', JSON.stringify(allTrackers))
-
     dispatch(removeTracker(trackerId))
-    console.log(trackerId)
   }
 
   function onSubmit (e) {
