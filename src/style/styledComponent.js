@@ -26,7 +26,6 @@ const GlobalStyle = createGlobalStyle`
 export default GlobalStyle
 
 export const Container = styled.div`
-  border-radius: 5px;
   display: flex; 
   flex-direction: column;
   align-items: center;
@@ -38,6 +37,7 @@ export const Container = styled.div`
   }
   @media all and (max-width: ${size.maxMobile}) and (min-width: ${size.minMobile})  {
     max-width: 520px;
+    padding: 0 10px ;
     min-width: 320px;
     width: auto;
   }
@@ -104,7 +104,6 @@ export const TrackerWrapper = styled.div`
   flex-direction: row;
   border-bottom: 1px solid #EF7C1D; 
   align-items: center;
-  margin: 10px 10px;
   animation: showY 1.0s forwards;
   
   @media all and (max-width: ${size.maxMobile}) and (min-width: ${size.minMobile}) {
