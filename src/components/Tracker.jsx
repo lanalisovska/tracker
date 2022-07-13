@@ -22,21 +22,24 @@ const Tracker = ({ tracker, removeFromLocal }) => {
   }, [timerOn])
 
   useEffect(() => {
-    if (timeStart !== null) {
+    if (!timeStop) {
       const dateNow = moment()
       setTimerOn(true)
       setTime(moment(dateNow.diff(timeStart)))
-    } else if (timeStop !== null) {
+    } else if (timeStop) {
       setTimerOn(false)
       setTime(moment(timeStop))
     }
   }, [])
 
-  const pause = () => {
+  const pauseTracker = () => {
     setTimerOn(false)
-    localStorage.removeItem(`${tracker.id}dateStart`)
     setTime(moment(time))
     localStorage.setItem(`${tracker.id}dateStop`, moment(time).format())
+  }
+  function resumeTracker () {
+    setTimerOn(true)
+    localStorage.removeItem(`${tracker.id}dateStop`)
   }
 
   const removeItem = () => {
@@ -52,9 +55,9 @@ const Tracker = ({ tracker, removeFromLocal }) => {
         <span>{('0' + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
         <span>{('0' + Math.floor((time / 1000) % 60)).slice(-2)}</span>
        <DeleteButton onClick={() => removeItem()}/>
-          {timerOn && <PauseButton onClick={() => pause()} />}
+          {timerOn && <PauseButton onClick={() => pauseTracker()} />}
           {!timerOn && time > 0 && (
-          <ResumeButton onClick={() => setTimerOn(true)} />
+          <ResumeButton onClick={() => resumeTracker()} />
           )}
     </TrackerWrapper>
   )
